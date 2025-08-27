@@ -1,6 +1,7 @@
 @theme {
-  --color-primary: rgba(0, 0, 0, .6);
-  --color-success: #22c55e;
-  --color-danger: #ef4444;
-  --color-warning: #f59e42;
+  --color-primary: var(--color-primary);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
+  --color-warning: var(--color-warning);
+  --background-color-button-primary-default: var(--background-color-button-primary-default);
 }

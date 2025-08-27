@@ -1,8 +1,17 @@
 {
     "color": {
-        "primary": { "value": "{color.neutral.600}" },
+        "primary": { "value": "green" },
         "success": { "value": "#22c55e" },
         "danger": { "value": "#ef4444" },
         "warning": { "value": "#f59e42" }
+    },
+    "background": {
+        "color": {
+            "button": {
+                "primary": {
+                    "default": { "value": "red" }
+                }
+            }
+        }
     }
 }

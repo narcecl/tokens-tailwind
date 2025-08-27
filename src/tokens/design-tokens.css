@@ -14,8 +14,9 @@
   --color-neutral-800: rgba(0, 0, 0, .8);
   --color-neutral-900: rgba(0, 0, 0, .9);
   --color-neutral-1000: rgba(0, 0, 0);
-  --color-primary: rgba(0, 0, 0, .6);
+  --color-primary: green;
   --color-success: #22c55e;
   --color-danger: #ef4444;
   --color-warning: #f59e42;
+  --background-color-button-primary-default: red;
 }

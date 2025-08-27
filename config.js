@@ -1,21 +1,23 @@
+import StyleDictionary from 'style-dictionary';
+
+const SEMANTIC_FILE = 'tokens/semantics.json';
+
 // Formato para generar el bloque @theme de Tailwind v4
 StyleDictionary.registerFormat({
     name: 'css/tailwind-theme',
     format: function ({ dictionary }) {
         // Solo variables semánticas (de semantics.json)
-        // Suponemos que los tokens semánticos están bajo color.primary, color.success, etc. y provienen de semantics.json
-        const semanticNames = ['primary', 'success', 'danger', 'warning', 'info', 'error'];
-        const semanticTokens = dictionary.allTokens.filter(
-            (token) => token.path[0] === 'color' && semanticNames.includes(token.path[1]),
+        const filteredTokens = dictionary.allTokens.filter(
+            (token) => token.filePath === SEMANTIC_FILE,
         );
+
         return (
             '@theme {\n' +
-            semanticTokens.map((token) => `  --${token.name}: ${token.value};`).join('\n') +
+            filteredTokens.map((token) => `  --${token.name}: var(--${token.name});`).join('\n') +
             '\n}'
         );
     },
 });
-import StyleDictionary from 'style-dictionary';
 
 // Simple transform: join path with dash, remove DEFAULT at end
 StyleDictionary.registerTransform({
@@ -23,9 +25,15 @@ StyleDictionary.registerTransform({
     type: 'name',
     transform: function (token) {
         let path = [...token.path];
-        if (path[path.length - 1] === 'DEFAULT') {
-            path = path.slice(0, -1);
+
+        if (token.filePath === SEMANTIC_FILE) {
+            let path = [...token.path];
+
+            if (path[0] === 'semantic') {
+                path = path.slice(1);
+            }
         }
+
         return path.join('-');
     },
 });
@@ -41,8 +49,9 @@ StyleDictionary.registerFormat({
     name: 'css/variables',
     format: function ({ dictionary, options }) {
         const selector = options?.selector || ':root';
+
         return `${selector} {\n${dictionary.allTokens
-            .map((token) => `  --${token.name}: ${token.value};`)
+            .map((token) => `    --${token.name}: ${token.value};`)
             .join('\n')}\n}`;
     },
 });
@@ -62,7 +71,7 @@ StyleDictionary.registerFormat({
             if (!categories.includes(cat)) return;
             let ref = result[cat];
             let keys = [...rest];
-            if (keys[keys.length - 1] === 'DEFAULT') keys = keys.slice(0, -1);
+
             for (let i = 0; i < keys.length - 1; i++) {
                 if (!ref[keys[i]]) ref[keys[i]] = {};
                 ref = ref[keys[i]];
@@ -103,16 +112,16 @@ export const config = {
                 },
             ],
         },
-        js: {
-            transformGroup: 'css/simple',
-            buildPath: 'src/tokens/',
-            files: [
-                {
-                    destination: 'design-tokens.js',
-                    format: 'javascript/tailwind-simple',
-                },
-            ],
-        },
+        // js: {
+        //     transformGroup: 'css/simple',
+        //     buildPath: 'src/tokens/',
+        //     files: [
+        //         {
+        //             destination: 'design-tokens.js',
+        //             format: 'javascript/tailwind-simple',
+        //         },
+        //     ],
+        // },
     },
 };
 

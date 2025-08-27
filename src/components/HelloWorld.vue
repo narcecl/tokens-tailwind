@@ -16,7 +16,7 @@ const count = ref(0);
                     <button
                         type="button"
                         @click="count++"
-                        class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-all duration-300 cursor-pointer"
+                        class="py-2 px-4 bg-button-primary-default text-white rounded hover:bg-blue-600 transition-all duration-300 cursor-pointer"
                     >
                         count is {{ count }}
                     </button>

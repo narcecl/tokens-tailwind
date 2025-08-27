@@ -1,13 +1,21 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
 :root {
+  --color-neutral-50: rgba(0, 0, 0, .05);
   --color-neutral-100: rgba(0, 0, 0, .1);
-  --color-neutral-1000: rgba(0, 0, 0);
   --color-neutral-200: rgba(0, 0, 0, .2);
   --color-neutral-300: rgba(0, 0, 0, .3);
   --color-neutral-400: rgba(0, 0, 0, .4);
-  --color-neutral-50: rgba(0, 0, 0, .05);
   --color-neutral-500: rgba(0, 0, 0, .5);
   --color-neutral-600: rgba(0, 0, 0, .6);
   --color-neutral-700: rgba(0, 0, 0, .7);
   --color-neutral-800: rgba(0, 0, 0, .8);
   --color-neutral-900: rgba(0, 0, 0, .9);
+  --color-neutral-1000: rgba(0, 0, 0);
+  --color-primary: rgba(0, 0, 0, .6);
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #f59e42;
 }

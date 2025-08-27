@@ -1,9 +1,6 @@
 @import 'tailwindcss';
 @import './tokens/design-tokens.css';
-
-@theme {
-    /* Custom CSS vars for this project */
-}
+@import './tokens/theme.css';
 
 body {
     color: var(--color-neutral-600);

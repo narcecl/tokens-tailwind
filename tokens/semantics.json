@@ -1,0 +1,8 @@
+{
+    "color": {
+        "primary": { "value": "{color.neutral.600}" },
+        "success": { "value": "#22c55e" },
+        "danger": { "value": "#ef4444" },
+        "warning": { "value": "#f59e42" }
+    }
+}

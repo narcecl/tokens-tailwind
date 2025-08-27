@@ -1,0 +1,6 @@
+@theme {
+  --color-primary: rgba(0, 0, 0, .6);
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #f59e42;
+}
